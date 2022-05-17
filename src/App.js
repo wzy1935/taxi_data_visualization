@@ -1,18 +1,9 @@
 import React from "react";
 import MapBox from "./components/MapBox";
-import Control from "./components/Control"
+import {Control, DEFAULT_CONTROL} from "./components/Control"
 
-import StartDotLayer from './components/layers/StartDotLayer'
+import ExampleHeatLayer from './components/layers/ExampleHeatLayer'
 import CabTripLayer from './components/layers/CabTripLayer'
-
-const LINE_DATA = [
-    {'COORDINATES': [113.929001,22.555218], 'WEIGHT': 10},
-    {'COORDINATES': [113.93789699999999,22.542633], 'WEIGHT': 10},
-    {'COORDINATES': [113.94236799999999,22.542717], 'WEIGHT': 10},
-    {'COORDINATES': [113.961281,22.562267000000002], 'WEIGHT': 10}
-]
-
-const TRIP_DATA = []
 
 
 
@@ -20,27 +11,26 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            'layers': [CabTripLayer(TRIP_DATA, 0)]
+            'layers': this.generateLayer(DEFAULT_CONTROL)
         };
     }
 
-    updateConfig = () => {
-        let layers = [];
-        // layers.push();
-        // this.setState({'layers': layers});
-
+    generateLayer = (vals) => {
+        return [
+            ExampleHeatLayer({'visible': vals.enableExampleHeatLayer}),
+            CabTripLayer({'visible': vals.enableCabTripLayer, 'current': vals.current})
+        ];
     }
 
-    setValue = (val) => {
-        console.log(val);
-        this.setState({'layers': [CabTripLayer(TRIP_DATA, val)]})
+    controlChange = (vals) => {
+        this.setState({'layers': this.generateLayer(vals)});
     }
 
     render() {
         return (
             <div>
                 <MapBox layers={this.state.layers}></MapBox>
-                <Control cb={this.updateConfig} onChange={(event) => {this.setValue(event.target.value)}}></Control>
+                <Control onChange={(vals) => {this.controlChange(vals)}}></Control>
             </div>
         )
     }
