@@ -22,6 +22,8 @@ function MapBox(props) {
                 initialViewState={INITIAL_VIEW_STATE}
                 controller={true}
                 layers={layers}
+                width='101%'
+                height='101%'
             >
                 {/* <Map 
                 mapStyle="mapbox://styles/mapbox/dark-v9"
