@@ -32,6 +32,7 @@ class Control extends React.Component {
     fetchThreeValue = () => {
         if (this.state.enablePlaying && this.state.threeValues[1] < this.state.threeValues[2]) {
             this.state.threeValues[1] = Math.min(1000 + this.state.threeValues[1], this.state.threeValues[2]);
+            this.state.current = this.state.threeValues[1]
         }
         this.onChange()
     }
@@ -72,6 +73,7 @@ class Control extends React.Component {
 
     resetMediumValue = () => {
         this.state['threeValues'][1] = this.state['threeValues'][0]
+        this.state.current = this.state['threeValues'][1]
     }
 
 
