@@ -14,8 +14,6 @@ class App extends React.Component {
 
     generateLayer = (vals) => {
         return [
-            //ExampleHeatLayer({'visible': vals.enableExampleHeatLayer}),
-            //CabTripLayer( {'visible': vals.enableCabTripLayer, 'current': vals.current}),
             VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current})
         ];
     }
