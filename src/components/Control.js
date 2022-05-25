@@ -33,8 +33,9 @@ class Control extends React.Component {
             // this.setState({'threeValues': three, 'current': cur, 'enablePlaying': enablePlaying})
             this.state['threeValues'][1] = Math.min(1000 + this.state['threeValues'][1], this.state['threeValues'][2]);
             this.state['current'] = this.state.threeValues[1];
+            this.onChange();
         }
-        this.onChange();
+
     }
 
     onChange = () => {
