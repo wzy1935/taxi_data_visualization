@@ -17,7 +17,7 @@ const DEFAULT_CONTROL = {
     enableVehicleTravelLayer: false,
     enablePeakSectionLayer: false,
     enablePlaying: false,
-    threeValues: [0, 43200, 86400]
+    threeValues: [0, 43200, 86400],
 }
 
 
@@ -76,7 +76,6 @@ class Control extends React.Component {
         this.state.current = this.state['threeValues'][1]
     }
 
-
     render() {
         return (
             <div className=" absolute p-6 bg-white rounded-md shadow-md left-4 top-4 p-2">
@@ -125,7 +124,6 @@ class Control extends React.Component {
                     }}
                 >高峰路段
                 </button>
-
                 <br/>
                 <text>
                     begin
@@ -154,6 +152,7 @@ class Control extends React.Component {
 
                 <br/>
             </div>
+            
         )
     }
 

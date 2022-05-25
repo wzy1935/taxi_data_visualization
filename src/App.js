@@ -10,6 +10,7 @@ import GetOffTaxiLayer from './components/layers/GetOffTaxiLayer'
 import GetOffTaxiClusterLayer from './components/layers/GetOffTaxiClusterLayer'
 import VehicleTravelLayer from "./components/layers/VehicleTravelLayer";
 import PeakSectionLayer from "./components/layers/PeakSectionLayer";
+import { Report } from "./components/Report";
 
 class App extends React.Component {
     constructor(props) {
@@ -40,7 +41,8 @@ class App extends React.Component {
         return (
             <div>
                 <MapBox layers={this.state.layers}></MapBox>
-                <Control onChange={(vals) => {this.controlChange(vals)}}></Control>
+                <Control onChange={(vals) => {this.controlChange(vals)}} ></Control>
+                <Report ></Report>
             </div>
         )
     }
