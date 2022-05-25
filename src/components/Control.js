@@ -1,6 +1,5 @@
 import React from "react";
-import {Slider, Switch} from 'antd';
-import {Button, Tooltip} from 'antd';
+import {Button, Slider} from 'antd';
 import 'antd/dist/antd.css';
 import {CaretRightOutlined, PauseOutlined, PoweroffOutlined} from '@ant-design/icons';
 
@@ -10,12 +9,7 @@ const DEFAULT_CONTROL = {
     end: 86399,
     enableExampleHeatLayer: false,
     enableCabTripLayer: false,
-    enableGetInTaxiLayer: false,
-    enableGetInTaxiClusterLayer: false,
-    enableGetOffTaxiLayer: false,
-    enableGetOffTaxiClusterLayer: false,
     enableVehicleTravelLayer: false,
-    enablePeakSectionLayer: false,
     enablePlaying: false,
     threeValues: [0, 43200, 86400]
 }
@@ -24,42 +18,47 @@ const DEFAULT_CONTROL = {
 class Control extends React.Component {
 
     constructor(props) {
-        super(props);
-        this.state = DEFAULT_CONTROL;
+        super(props)
+        this.state = DEFAULT_CONTROL
         setInterval(this.fetchThreeValue, 100)
     }
 
     fetchThreeValue = () => {
-        if (this.state.enablePlaying && this.state.threeValues[1] < this.state.threeValues[2]) {
-            this.state.threeValues[1] = Math.min(1000 + this.state.threeValues[1], this.state.threeValues[2]);
-            this.state.current = this.state.threeValues[1]
+        if (this.state['enablePlaying'] && this.state['threeValues'][1] < this.state['threeValues'][2]) {
+            // let three = this.state['threeValues']
+            // three[1] = Math.min(1000 + this.state['threeValues'][1], this.state['threeValues'][2])
+            // let enablePlaying = this.state['enablePlaying']
+            // let cur = three[1]
+            //
+            // this.setState({'threeValues': three, 'current': cur, 'enablePlaying': enablePlaying})
+            this.state['threeValues'][1] = Math.min(1000 + this.state['threeValues'][1], this.state['threeValues'][2]);
+            this.state['current'] = this.state.threeValues[1];
+            this.onChange();
         }
-        this.onChange()
+
     }
 
     onChange = () => {
-        this.props.onChange(this.state);
-
+        this.props.onChange(this.state)
     }
 
     sliderChanged = (value) => {
-        this.state['threeValues'] = value
-
+        this.setState({'threeValues': value}, this.onChange)
     }
 
     changeBegin = (event) => {
-        let val = Number(event.target.value);
-        this.setState({'begin': val}, this.onChange);
+        let val = Number(event.target.value)
+        this.setState({'begin': val}, this.onChange)
     }
 
     changeCurrent = (event) => {
-        let val = Number(event.target.value);
-        this.setState({'current': val}, this.onChange);
+        let val = Number(event.target.value)
+        this.setState({'current': val}, this.onChange)
     }
 
     changeEnd = (event) => {
-        let val = Number(event.target.value);
-        this.setState({'end': val}, this.onChange);
+        let val = Number(event.target.value)
+        this.setState({'end': val}, this.onChange)
     }
 
     changeLayer = (layerName) => {
@@ -68,12 +67,15 @@ class Control extends React.Component {
     }
 
     changePlayingState = (val) => {
-        this.state['enablePlaying'] = val
+
+        // this.state['enablePlaying'] = val
+        this.setState({'enablePlaying': val}, this.onChange)
     }
 
     resetMediumValue = () => {
-        this.state['threeValues'][1] = this.state['threeValues'][0]
-        this.state.current = this.state['threeValues'][1]
+        let val = [this.state['threeValues'][0], this.state['threeValues'][1], this.state['threeValues'][2]]
+        val[1] = this.state['threeValues'][0]
+        this.setState({'threeValues': val, 'current': val[1]}, this.onChange)
     }
 
 
@@ -83,14 +85,14 @@ class Control extends React.Component {
                 <button
                     className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enableGetInTaxiLayer ? " bg-green-600" : "bg-gray-600")}
                     onClick={() => {
-                        this.changeLayer('enableGetInTaxiLayer')
+
                     }}
                 >上车地点
                 </button>
                 <button
                     className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enableGetInTaxiClusterLayer ? " bg-green-600" : "bg-gray-600")}
                     onClick={() => {
-                        this.changeLayer('enableGetInTaxiClusterLayer')
+
                     }}
                 >上车地点聚类
                 </button>
@@ -98,14 +100,14 @@ class Control extends React.Component {
                 <button
                     className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enableGetOffTaxiLayer ? " bg-green-600" : "bg-gray-600")}
                     onClick={() => {
-                        this.changeLayer('enableGetOffTaxiLayer')
+
                     }}
                 >下车地点
                 </button>
                 <button
                     className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enableGetOffTaxiClusterLayer ? " bg-green-600" : "bg-gray-600")}
                     onClick={() => {
-                        this.changeLayer('enableGetOffTaxiClusterLayer')
+
                     }}
                 >下车地点聚类
                 </button>
@@ -121,7 +123,7 @@ class Control extends React.Component {
                 <button
                     className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enablePeakSectionLayer ? " bg-green-600" : "bg-gray-600")}
                     onClick={() => {
-                        this.changeLayer('enablePeakSectionLayer')
+
                     }}
                 >高峰路段
                 </button>
