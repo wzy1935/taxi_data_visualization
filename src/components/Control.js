@@ -12,6 +12,7 @@ const DEFAULT_CONTROL = {
     enableVehicleTravelLayer: false,
     enablePlaying: false,
     threeValues: [0, 43200, 86400],
+    showReport: false
 }
 
 
@@ -20,12 +21,12 @@ class Control extends React.Component {
     constructor(props) {
         super(props);
         this.state = DEFAULT_CONTROL;
-        setInterval(this.fetchThreeValue, 100);
+        setInterval(this.fetchThreeValue, 50);
     }
 
     fetchThreeValue = () => {
         if (this.state['enablePlaying'] && this.state['threeValues'][1] < this.state['threeValues'][2]) {
-            let tmp = [this.state['threeValues'][0], Math.min(1000 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
+            let tmp = [this.state['threeValues'][0], Math.min(500 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
             this.setState({'threeValues': tmp}, this.onChange);
         }
 
@@ -62,10 +63,9 @@ class Control extends React.Component {
         this.setState({'threeValues': val, 'current': val[1]}, this.onChange);
     }
 
-
     render() {
         return (
-            <div className=" absolute p-6 pt-3 bg-gray-100 rounded-md shadow-md left-6 top-6">    
+            <div className=" ml-6 mt-6 p-6 pt-3 bg-gray-100 rounded-md shadow-md h-min min-w-fit pointer-events-auto">    
                 <button
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md text-black "}
                     onClick={() => {
@@ -101,20 +101,21 @@ class Control extends React.Component {
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md"
                     + (this.state.enableVehicleTravelLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-                        this.changeLayer('enableVehicleTravelLayer')
+                        this.changeLayer('enableVehicleTravelLayer');
                     }}
                 >车辆行程
                 </button>
                 <button
-                    className={" p-2 transition w-28 m-2 rounded-md shadow-md text-black "}
+                    className={" p-2 transition w-28 m-2 rounded-md shadow-md"
+                    + (this.state.showReport ? " text-white bg-orange-400 hover:bg-orange-300" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-
+                        this.setState({'showReport': !this.state.showReport}, 
+                        () => {this.props.setReport(this.state.showReport)});
                     }}
-                >高峰路段
+                >查看报告
                 </button>
 
                 <hr className=" my-4"/>
-
 
                 <Slider range min={0} max={86400} value={this.state['threeValues']} disabled={false} onChange={
                     this.sliderChanged
@@ -134,6 +135,7 @@ class Control extends React.Component {
                 </div>
 
             </div>
+            
         )
     }
 

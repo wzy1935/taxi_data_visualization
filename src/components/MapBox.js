@@ -10,26 +10,29 @@ const INITIAL_VIEW_STATE = {
     longitude: 114.029001,
     latitude: 22.505218,
     zoom: 11,
-    pitch: 0,
-    bearing: 0
+    pitch: 45,
+    bearing: 30
 };
 
 
 function MapBox(props) {
     const layers = props.layers;
         return (
-            <DeckGL
-                initialViewState={INITIAL_VIEW_STATE}
-                controller={true}
-                layers={layers}
-                width='101%'
-                height='101%'
-            >
-                <Map
-                mapStyle="mapbox://styles/mapbox/dark-v9"
-                attributionControl={false}
-                mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/>
-            </DeckGL>
+            <div className=" w-96">
+                <DeckGL
+                    initialViewState={INITIAL_VIEW_STATE}
+                    controller={true}
+                    layers={layers}
+                    width='101%'
+                    height='101%'
+                >
+                    { <Map
+                    mapStyle="mapbox://styles/mapbox/dark-v9"
+                    attributionControl={false}
+                    mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/> }
+                </DeckGL>
+            </div>
+
         );
 }
 

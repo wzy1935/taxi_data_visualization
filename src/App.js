@@ -3,12 +3,14 @@ import MapBox from "./components/MapBox";
 import {Control, DEFAULT_CONTROL} from "./components/Control"
 
 import VehicleTravelLayer from "./components/layers/VehicleTravelLayer";
+import { Report } from "./components/Report";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            'layers': this.generateLayer(DEFAULT_CONTROL)
+            'layers': this.generateLayer(DEFAULT_CONTROL),
+            'showReport': false
         };
     }
 
@@ -16,6 +18,10 @@ class App extends React.Component {
         return [
             VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current})
         ];
+    }
+
+    setReportCallback = (show) => {
+        this.setState({'showReport': show});
     }
 
     controlChange = (vals) => {
@@ -26,7 +32,10 @@ class App extends React.Component {
         return (
             <div>
                 <MapBox layers={this.state.layers}></MapBox>
-                <Control onChange={(vals) => {this.controlChange(vals)}}></Control>
+                <div className="absolute flex flex-row pointer-events-none h-screen min-w-screen">
+                    <Control onChange={(vals) => {this.controlChange(vals)}} setReport={this.setReportCallback}></Control>
+                    <Report show={this.state.showReport}></Report>
+                </div>
             </div>
         )
     }
