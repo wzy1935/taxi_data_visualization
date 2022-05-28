@@ -17,23 +17,23 @@ const INITIAL_VIEW_STATE = {
 
 function MapBox(props) {
     const layers = props.layers;
-        return (
-            <div className=" w-96">
-                <DeckGL
-                    initialViewState={INITIAL_VIEW_STATE}
-                    controller={true}
-                    layers={layers}
-                    width='101%'
-                    height='101%'
-                >
-                    { <Map
+    return (
+        <div className=" w-96">
+            <DeckGL
+                initialViewState={INITIAL_VIEW_STATE}
+                controller={true}
+                layers={layers}
+                width='101%'
+                height='101%'
+            >
+                { <Map
                     mapStyle="mapbox://styles/mapbox/dark-v9"
                     attributionControl={false}
                     mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/> }
-                </DeckGL>
-            </div>
+            </DeckGL>
+        </div>
 
-        );
+    );
 }
 
 export default MapBox;

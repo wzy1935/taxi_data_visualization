@@ -60,7 +60,7 @@ function CabTripLayer(props) {
         widthMinPixels: 5,
         fadeTrail: true,
         trailLength: 200000,
-        currentTime: props.current
+        currentTime: props.current 
     });
 }
 

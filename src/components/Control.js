@@ -12,7 +12,9 @@ const DEFAULT_CONTROL = {
     enableVehicleTravelLayer: false,
     enablePlaying: false,
     threeValues: [0, 43200, 86400],
-    showReport: false
+    showReport: false,
+    enablePickupPointLayer:false,
+    enableDropoffPointLayer:false
 }
 
 
@@ -65,11 +67,11 @@ class Control extends React.Component {
 
     render() {
         return (
-            <div className=" ml-6 mt-6 p-6 pt-3 bg-gray-100 rounded-md shadow-md h-min min-w-fit pointer-events-auto">    
+            <div className=" ml-6 mt-6 p-6 pt-3 bg-gray-100 rounded-md shadow-md h-min min-w-fit pointer-events-auto">
                 <button
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md text-black "}
                     onClick={() => {
-
+                        this.changeLayer('enablePickupPointLayer')
                     }}
                 >上车地点
                 </button>
@@ -84,7 +86,7 @@ class Control extends React.Component {
                 <button
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md text-black "}
                     onClick={() => {
-
+                        this.changeLayer('enableDropoffPointLayer')
                     }}
                 >下车地点
                 </button>
@@ -109,8 +111,8 @@ class Control extends React.Component {
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md"
                     + (this.state.showReport ? " text-white bg-orange-400 hover:bg-orange-300" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-                        this.setState({'showReport': !this.state.showReport}, 
-                        () => {this.props.setReport(this.state.showReport)});
+                        this.setState({'showReport': !this.state.showReport},
+                            () => {this.props.setReport(this.state.showReport)});
                     }}
                 >查看报告
                 </button>
@@ -135,9 +137,10 @@ class Control extends React.Component {
                 </div>
 
             </div>
-            
+
         )
     }
+
 
 }
 
