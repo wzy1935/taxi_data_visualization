@@ -4,6 +4,8 @@ import {Control, DEFAULT_CONTROL} from "./components/Control"
 
 import ExampleHeatLayer from './components/layers/ExampleHeatLayer'
 import CabTripLayer from './components/layers/CabTripLayer'
+import GetonTaxiLayer from "./components/layers/GetonTaxiLayer";
+import GetoffTaxiLayer from "./components/layers/GetoffTaxiLayer";
 
 
 
@@ -18,7 +20,9 @@ class App extends React.Component {
     generateLayer = (vals) => {
         return [
             ExampleHeatLayer({'visible': vals.enableExampleHeatLayer}),
-            CabTripLayer({'visible': vals.enableCabTripLayer, 'current': vals.current})
+            CabTripLayer({'visible': vals.enableCabTripLayer, 'current': vals.current}),
+            GetonTaxiLayer({'visible':vals.enablePickupPointLayer}),
+            GetoffTaxiLayer({'visible':vals.enableDropoffPointLayer})
         ];
     }
 

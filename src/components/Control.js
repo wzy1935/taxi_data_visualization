@@ -5,7 +5,9 @@ const DEFAULT_CONTROL = {
     current: 28800,
     end: 86399,
     enableExampleHeatLayer: false,
-    enableCabTripLayer: false
+    enableCabTripLayer: false,
+    enablePickupPointLayer:false,
+    enableDropoffPointLayer:false
 }
 
 class Control extends React.Component {
@@ -50,6 +52,15 @@ class Control extends React.Component {
                 className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enableCabTripLayer ? " bg-green-600" : "bg-gray-600")}
                 onClick={() => {this.changeLayer('enableCabTripLayer')}}
                 >CabTripLayer</button>
+                <button
+                    className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enablePickupPointLayer ? " bg-green-600" : "bg-gray-600")}
+                    onClick={() => {this.changeLayer('enablePickupPointLayer')}}
+                >GetinTaxiLayer</button>
+                <button
+                    className={" p-2 m-2 rounded-md shadow-md text-white " + (this.state.enableDropoffPointLayer ? " bg-green-600" : "bg-gray-600")}
+                    onClick={() => {this.changeLayer('enableDropoffPointLayer')}}
+                >GetoffTaxiLayer</button>
+
 
                 <br/>
                 begin <input type="range" name="points" min="0" max="86399" value={this.state.begin} onChange={this.changeBegin}/>
