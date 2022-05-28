@@ -19,9 +19,8 @@ class App extends React.Component {
     generateLayer = (vals) => {
         return [
             VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current}),
-            //TODO: pick visible from control panel
-            GetInClusterLayer({'visible': true}),
-            GetOffClusterLayer({'visible': true})
+            GetInClusterLayer({ 'visible': vals.enableGetInClusterLayer, 'begin': vals.begin, 'end': vals.end}),
+            GetOffClusterLayer({ 'visible': vals.enableGetOffClusterLayer, 'begin': vals.begin, 'end': vals.end})
         ];
     }
 
