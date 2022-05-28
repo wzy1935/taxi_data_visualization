@@ -3,6 +3,8 @@ import MapBox from "./components/MapBox";
 import {Control, DEFAULT_CONTROL} from "./components/Control"
 
 import VehicleTravelLayer from "./components/layers/VehicleTravelLayer";
+import GetInClusterLayer from "./components/layers/GetInClusterLayer";
+import GetOffClusterLayer from "./components/layers/GetOffClusterLayer";
 import { Report } from "./components/Report";
 
 class App extends React.Component {
@@ -16,7 +18,10 @@ class App extends React.Component {
 
     generateLayer = (vals) => {
         return [
-            VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current})
+            VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current}),
+            //TODO: pick visible from control panel
+            GetInClusterLayer({'visible': true}),
+            GetOffClusterLayer({'visible': true})
         ];
     }
 
