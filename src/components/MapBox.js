@@ -26,10 +26,10 @@ function MapBox(props) {
                     width='101%'
                     height='101%'
                 >
-                    { <Map
+                    {/* { <Map
                     mapStyle="mapbox://styles/mapbox/dark-v9"
                     attributionControl={false}
-                    mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/> }
+                    mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/> } */}
                 </DeckGL>
             </div>
 
