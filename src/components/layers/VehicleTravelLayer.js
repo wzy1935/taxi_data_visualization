@@ -51,8 +51,8 @@ const SAMPLE_DATA = [
 function VehicleTravelLayer(props) {
     return new TripsLayer({
         id: 'VehicleTravelLayer',
-        data: SAMPLE_DATA,
-        // data: '/api/layers/VehicleTravelLayer?startTime='+props.threeValues[0]+'&endTime='+props.threeValues[2],
+        // data: SAMPLE_DATA,
+        data: 'http://127.0.0.1:5000/vehicleTravel',
         visible: props.visible,
         getPath: d => d.waypoints.map(p => p.coordinates),
         // deduct start timestamp from each data point to avoid overflow

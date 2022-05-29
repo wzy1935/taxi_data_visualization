@@ -16,7 +16,7 @@ const SAMPLE_DATA = [
 function GetOffClusterLayer(props) {
     return new IconLayer({
         id: 'GetOffClusterLayer',
-        data: SAMPLE_DATA,
+        data: 'http://127.0.0.1:5000/getOffCluster',
         getFilterValue: d => d.four_digit_time,
         filterRange: [100 * parseInt(props.begin / 3600) + parseInt(props.end / 3600), 100 * parseInt(props.begin / 3600) + parseInt(props.end / 3600)],
         extensions: [new DataFilterExtension({ filterSize: 1 })],

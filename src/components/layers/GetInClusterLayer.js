@@ -2,7 +2,7 @@ import { IconLayer } from '@deck.gl/layers';
 import { DataFilterExtension } from '@deck.gl/extensions';
 
 const ICON_MAPPING = {
-    marker: { x: 0, y: 0, width: 128, height: 128 }
+    marker: { x: 0, y: 0, width: 128, height: 128, mask: true }
 };
 
 const SAMPLE_DATA = [
@@ -16,7 +16,7 @@ const SAMPLE_DATA = [
 function GetInClusterLayer(props) {
     return new IconLayer({
         id: 'GetInClusterLayer',
-        data: SAMPLE_DATA,
+        data:'http://127.0.0.1:5000/getOnCluster',
         getFilterValue: d => d.four_digit_time,
         filterRange: [100 * parseInt(props.begin / 3600) + parseInt(props.end / 3600), 100 * parseInt(props.begin / 3600) + parseInt(props.end / 3600)],
         extensions: [new DataFilterExtension({ filterSize: 1 })],
@@ -27,6 +27,7 @@ function GetInClusterLayer(props) {
         getIcon: d => 'marker',
         sizeScale: 15,
         //TODO end
+        getColor: [255,0, 0],
         getPosition: d => d.coordinates,
         getSize: d => 5,
     });

@@ -1,4 +1,5 @@
 import {ScatterplotLayer} from '@deck.gl/layers';
+import {HeatmapLayer} from '@deck.gl/aggregation-layers';
 import {DataFilterExtension} from '@deck.gl/extensions';
 
 
@@ -51,7 +52,8 @@ function GetonTaxiLayer(props) {
     return new ScatterplotLayer({
         id: 'pick-up-layer',
         // data: /api/layers/GetoffTaxiLayer,
-        data:SAMPLE_DATA,
+        // data:SAMPLE_DATA,
+        data: 'http://127.0.0.1:5000/getOnTaxi',
         visible:props.visible,
         pickable: true,
         opacity: 0.8,
@@ -69,6 +71,17 @@ function GetonTaxiLayer(props) {
         filterRange: [props.begin, props.end],
         extensions: [new DataFilterExtension({filterSize: 1})]
     })
+    // return new HeatmapLayer({
+    //     id: 'pick-up-layer',
+    //     data: 'http://127.0.0.1:5000/getOnTaxi',
+    //     visible: props.visible,
+    //     getPosition: d => d.coordinates,
+    //     getWeight: d => 1,
+    //     aggregation: 'SUM',
+    //     getFilterValue: d => d.timestamp,
+    //     filterRange: [props.begin, props.end],
+    //     extensions: [new DataFilterExtension({filterSize: 1})]
+    // })
 }
 
 

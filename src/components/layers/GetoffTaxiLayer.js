@@ -1,5 +1,5 @@
 import {ScatterplotLayer} from '@deck.gl/layers';
-import {DataFilterExtension} from '@deck.gl/extensions';
+import {HeatmapLayer} from '@deck.gl/aggregation-layers';
 
 const SAMPLE_DATA = [
     { timestamp: 0, coordinates: [113.975182, 22.556667] },
@@ -47,26 +47,34 @@ const SAMPLE_DATA = [
 
 
 function GetoffTaxiLayer(props) {
-    return new ScatterplotLayer({
+    // return new ScatterplotLayer({
+    //     id: 'drop-off-layer',
+    //     //data:/api/layers/GetoffTaxiLayer,
+    //     data:SAMPLE_DATA,
+    //     visible:props.visible,
+    //     pickable: true,
+    //     opacity: 0.8,
+    //     stroked: true,
+    //     filled: true,
+    //     radiusScale: 6,
+    //     radiusMinPixels: 1,
+    //     radiusMaxPixels: 100,
+    //     lineWidthMinPixels: 1,
+    //     getPosition: d => d.coordinates,
+    //     getRadius: d =>20,
+    //     getFillColor: d => [0, 0, 255],
+    //     getLineColor: d => [0, 0, 0],
+    //     getFilterValue: d => d.timestamp,
+    //     filterRange: [props.begin, props.end],
+    //     extensions: [new DataFilterExtension({filterSize: 1})]
+    // })
+    return new HeatmapLayer({
         id: 'drop-off-layer',
-        //data:/api/layers/GetoffTaxiLayer,
-        data:SAMPLE_DATA,
-        visible:props.visible,
-        pickable: true,
-        opacity: 0.8,
-        stroked: true,
-        filled: true,
-        radiusScale: 6,
-        radiusMinPixels: 1,
-        radiusMaxPixels: 100,
-        lineWidthMinPixels: 1,
+        data: 'http://127.0.0.1:5000/getOffTaxi',
+        visible: props.visible,
         getPosition: d => d.coordinates,
-        getRadius: d =>20,
-        getFillColor: d => [0, 0, 255],
-        getLineColor: d => [0, 0, 0],
-        getFilterValue: d => d.timestamp,
-        filterRange: [props.begin, props.end],
-        extensions: [new DataFilterExtension({filterSize: 1})]
+        getWeight: d => 1,
+        aggregation: 'SUM'
     })
 }
 
