@@ -10,6 +10,8 @@ const DEFAULT_CONTROL = {
     enableExampleHeatLayer: false,
     enableCabTripLayer: false,
     enableVehicleTravelLayer: false,
+    enableGetInClusterLayer: false,
+    enableGetOffClusterLayer: false,
     enablePlaying: false,
     threeValues: [0, 43200, 86400],
     showReport: false,
@@ -77,9 +79,10 @@ class Control extends React.Component {
                 >上车地点
                 </button>
                 <button
-                    className={" p-2 transition w-28 m-2 rounded-md shadow-md text-black "}
+                    className={" p-2 transition w-28 m-2 rounded-md shadow-md"
+                        + (this.state.enableGetInClusterLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-
+                        this.changeLayer('enableGetInClusterLayer');
                     }}
                 >上车地点聚类
                 </button>
@@ -93,9 +96,10 @@ class Control extends React.Component {
                 >下车地点
                 </button>
                 <button
-                    className={" p-2 transition w-28 m-2 rounded-md shadow-md text-black "}
+                    className={" p-2 transition w-28 m-2 rounded-md shadow-md"
+                        + (this.state.enableGetOffClusterLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-
+                        this.changeLayer('enableGetOffClusterLayer');
                     }}
                 >下车地点聚类
                 </button>
