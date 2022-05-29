@@ -2,7 +2,7 @@ import { IconLayer } from '@deck.gl/layers';
 import { DataFilterExtension } from '@deck.gl/extensions';
 
 const ICON_MAPPING = {
-    marker: { x: 128, y: 0, width: 128, height: 128 }
+    marker: { x: 0, y: 0, width: 128, height: 128, anchorX: 64, anchorY: 128, mask: true }
 };
 
 const SAMPLE_DATA = [
@@ -25,10 +25,12 @@ function GetOffClusterLayer(props) {
         iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/icon-atlas.png',
         iconMapping: ICON_MAPPING,
         getIcon: d => 'marker',
-        sizeScale: 15,
+        sizeScale: 8,
+        getColor: d => [75, 255, 60, 198],
         //TODO end
         getPosition: d => d.coordinates,
         getSize: d => 5,
+        pickable: true
     });
 
 }
