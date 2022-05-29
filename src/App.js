@@ -2,8 +2,14 @@ import React from "react";
 import MapBox from "./components/MapBox";
 import {Control, DEFAULT_CONTROL} from "./components/Control"
 
+
 import VehicleTravelLayer from "./components/layers/VehicleTravelLayer";
 import { Report } from "./components/Report";
+import GetonTaxiLayer from "./components/layers/GetonTaxiLayer";
+import GetoffTaxiLayer from "./components/layers/GetoffTaxiLayer";
+
+
+
 
 class App extends React.Component {
     constructor(props) {
@@ -16,7 +22,9 @@ class App extends React.Component {
 
     generateLayer = (vals) => {
         return [
-            VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current})
+            VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current}),
+            GetonTaxiLayer({'visible':vals.enablePickupPointLayer,'begin':vals.begin,'end':vals.end}),
+            GetoffTaxiLayer({'visible':vals.enableDropoffPointLayer,'begin':vals.begin,'end':vals.end})
         ];
     }
 
