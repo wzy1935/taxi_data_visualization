@@ -23,7 +23,7 @@ function MapBox(props) {
                     initialViewState={INITIAL_VIEW_STATE}
                     controller={true}
                     layers={layers}
-                    getTooltip={({ object }) => object && `${object.four_digit_time}\n${object.coordinates}`}
+                    getTooltip={({ object }) => object && `${object.address}\n`}
                     width='101%'
                     height='101%'
                 >
