@@ -16,7 +16,7 @@ const SAMPLE_DATA = [
 function GetInClusterLayer(props) {
     return new IconLayer({
         id: 'GetInClusterLayer',
-        data: SAMPLE_DATA,
+        data:'http://127.0.0.1:5000/getOnCluster',
         getFilterValue: d => d.four_digit_time,
         filterRange: [100 * parseInt(props.begin / 3600) + parseInt(props.end / 3600), 100 * parseInt(props.begin / 3600) + parseInt(props.end / 3600)],
         extensions: [new DataFilterExtension({ filterSize: 1 })],
@@ -28,6 +28,7 @@ function GetInClusterLayer(props) {
         sizeScale: 8,
         getColor: d => [60, 250, 255, 198],
         //TODO end
+        getColor: [255,0, 0],
         getPosition: d => d.coordinates,
         getSize: d => 5,
         pickable: true

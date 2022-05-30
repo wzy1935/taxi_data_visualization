@@ -28,13 +28,14 @@ function MapBox(props) {
                     height='101%'
                 >
                     { <Map
+
                     mapStyle="mapbox://styles/mapbox/dark-v9"
                     attributionControl={false}
                     mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/> }
-                </DeckGL>
-            </div>
+            </DeckGL>
+        </div>
 
-        );
+    );
 }
 
 export default MapBox;
