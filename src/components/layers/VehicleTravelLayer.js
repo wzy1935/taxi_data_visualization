@@ -1,4 +1,5 @@
 import { TripsLayer } from '@deck.gl/geo-layers';
+import vehicleTravel from '../../static/data_half.json'
 
 const SAMPLE_DATA = [
     {
@@ -48,11 +49,13 @@ const SAMPLE_DATA = [
     }
 ];
 
+
+
 function VehicleTravelLayer(props) {
     return new TripsLayer({
         id: 'VehicleTravelLayer',
-        // data: SAMPLE_DATA,
-        data: 'http://127.0.0.1:5000/vehicleTravel',
+        // data: vehicleTravelData,
+        data: vehicleTravel,
         visible: props.visible,
         getPath: d => d.waypoints.map(p => p.coordinates),
         // deduct start timestamp from each data point to avoid overflow
