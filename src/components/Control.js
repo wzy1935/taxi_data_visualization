@@ -4,16 +4,16 @@ import 'antd/dist/antd.css';
 import {CaretRightOutlined, PauseOutlined, PoweroffOutlined} from '@ant-design/icons';
 
 const DEFAULT_CONTROL = {
-    current: 43200,
+    current: 480,
     begin: 0,
-    end: 86400,
+    end: 1440,
     enableExampleHeatLayer: false,
     enableCabTripLayer: false,
     enableVehicleTravelLayer: false,
     enableGetInClusterLayer: false,
     enableGetOffClusterLayer: false,
     enablePlaying: false,
-    threeValues: [0, 43200, 86400],
+    threeValues: [0, 480, 1440],
     showReport: false,
     enablePickupPointLayer:false,
     enableDropoffPointLayer:false
@@ -30,7 +30,7 @@ class Control extends React.Component {
 
     fetchThreeValue = () => {
         if (this.state['enablePlaying'] && this.state['threeValues'][1] < this.state['threeValues'][2]) {
-            let tmp = [this.state['threeValues'][0], Math.min(100 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
+            let tmp = [this.state['threeValues'][0], Math.min(5 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
             this.setState({'threeValues': tmp}, this.onChange);
         }
 
@@ -125,7 +125,7 @@ class Control extends React.Component {
 
                 <hr className=" my-4"/>
 
-                <Slider range min={0} max={86400} value={this.state['threeValues']} disabled={false} onChange={
+                <Slider range min={0} max={1440} value={this.state['threeValues']} disabled={false} onChange={
                     this.sliderChanged
                 }/>
                 <div className=" flex justify-between text-gray-500">
