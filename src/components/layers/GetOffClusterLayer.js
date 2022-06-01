@@ -17,7 +17,7 @@ function GetOffClusterLayer(props) {
         iconMapping: ICON_MAPPING,
         getIcon: d => 'marker',
         sizeScale: 8,
-        getColor: d => [245, 158, 11],
+        getColor: d => [5, 150, 105],
         getPosition: d => d.coordinates,
         getSize: d => 5,
         pickable: true

@@ -10,8 +10,8 @@ const INITIAL_VIEW_STATE = {
     longitude: 114.029001,
     latitude: 22.505218,
     zoom: 11,
-    pitch: 45,
-    bearing: 30
+    pitch: 20,
+    bearing: 20
 };
 
 
@@ -29,7 +29,7 @@ function MapBox(props) {
                 >
                     { <Map
 
-                    mapStyle="mapbox://styles/mapbox/dark-v9"
+                    mapStyle="mapbox://styles/mapbox/dark-v10"
                     attributionControl={false}
                     mapboxAccessToken={MAPBOX_ACCESS_TOKEN}/> }
             </DeckGL>

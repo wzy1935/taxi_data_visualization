@@ -30,10 +30,16 @@ class Control extends React.Component {
 
     fetchThreeValue = () => {
         if (this.state['enablePlaying'] && this.state['threeValues'][1] < this.state['threeValues'][2]) {
-            let tmp = [this.state['threeValues'][0], Math.min(5 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
+            let tmp = [this.state['threeValues'][0], Math.min(1 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
             this.setState({'threeValues': tmp}, this.onChange);
         }
 
+    }
+
+
+    formatter = (value) => {
+        return ((Math.floor(value / 60)).toString().length < 2 ? "0" + (Math.floor(value / 60)).toString() : 
+        (Math.floor(value / 60)).toString()) + ":" + ((value % 60).toString().length < 2 ? "0" + (value % 60).toString() : (value % 60).toString());
     }
 
     onChange = () => {
@@ -125,7 +131,7 @@ class Control extends React.Component {
 
                 <hr className=" my-4"/>
 
-                <Slider range min={0} max={1440} value={this.state['threeValues']} disabled={false} onChange={
+                <Slider range tipFormatter={this.formatter} min={0} max={1440} value={this.state['threeValues']} disabled={false} onChange={
                     this.sliderChanged
                 }/>
                 <div className=" flex justify-between text-gray-500">

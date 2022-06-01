@@ -14,7 +14,7 @@ function GetoffTaxiLayer(props) {
         radiusMaxPixels: 10,
         getPosition: d => d.coordinates,
         getRadius: 4,
-        getFillColor: [245, 158, 11],
+        getFillColor: [5, 150, 105],
         getFilterValue: d => d.timestamp,
         pickable: false,
         filterRange: [props.begin * 60, props.end * 60],
