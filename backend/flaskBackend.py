@@ -16,6 +16,7 @@ GET_ON_TAXI = None
 GET_OFF_TAXI = None
 GET_ON_CLUSTER = None
 GET_OFF_CLUSTER = None
+TRAVEL = None
 
 SAMPLE = '''
 [
@@ -81,7 +82,7 @@ def readData():
 @app.route('/vehicleTravel', methods=['GET'])
 @cross_origin()
 def vehicleTravel():
-    return Response(SAMPLE, mimetype='application/json')
+    return Response(str(TRAVEL).replace('\'', '"'), mimetype='application/json')
 
 
 @app.route('/getOnTaxi', methods=['GET'])
@@ -135,6 +136,11 @@ def loadGetOffCluster():
     with open(path, "r") as f:
         GET_OFF_CLUSTER = json.load(f)
 
+def loadTravel():
+    global TRAVEL
+    path = 'TRAVEL'
+    with open(path, "r") as f:
+        TRAVEL = json.load(f)
 
 if __name__ == '__main__':
     # readData()
@@ -142,6 +148,7 @@ if __name__ == '__main__':
     loadGetOffTaxi()
     loadGetOnCluster()
     loadGetOffCluster()
+    loadTravel()
     app.run(debug=True, host='127.0.0.1', port=5000, threaded=True)
 
     # print(json.loads(GETON))

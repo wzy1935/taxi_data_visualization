@@ -25,12 +25,12 @@ class Control extends React.Component {
     constructor(props) {
         super(props);
         this.state = DEFAULT_CONTROL;
-        setInterval(this.fetchThreeValue, 100);
+        setInterval(this.fetchThreeValue, 50);
     }
 
     fetchThreeValue = () => {
         if (this.state['enablePlaying'] && this.state['threeValues'][1] < this.state['threeValues'][2]) {
-            let tmp = [this.state['threeValues'][0], Math.min(500 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
+            let tmp = [this.state['threeValues'][0], Math.min(100 + this.state['threeValues'][1], this.state['threeValues'][2]) , this.state['threeValues'][2]];
             this.setState({'threeValues': tmp}, this.onChange);
         }
 
