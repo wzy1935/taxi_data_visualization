@@ -25,7 +25,7 @@ class Control extends React.Component {
     constructor(props) {
         super(props);
         this.state = DEFAULT_CONTROL;
-        setInterval(this.fetchThreeValue, 100);
+        setInterval(this.fetchThreeValue, 50);
     }
 
     fetchThreeValue = () => {
