@@ -2,11 +2,10 @@ import React from "react";
 import MapBox from "./components/MapBox";
 import {Control, DEFAULT_CONTROL} from "./components/Control"
 
-
+import { Report } from "./components/Report";
 import VehicleTravelLayer from "./components/layers/VehicleTravelLayer";
 import GetInClusterLayer from "./components/layers/GetInClusterLayer";
 import GetOffClusterLayer from "./components/layers/GetOffClusterLayer";
-import { Report } from "./components/Report";
 import GetonTaxiLayer from "./components/layers/GetonTaxiLayer";
 import GetoffTaxiLayer from "./components/layers/GetoffTaxiLayer";
 
