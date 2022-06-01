@@ -1,5 +1,5 @@
 import { TripsLayer } from '@deck.gl/geo-layers';
-import vehicleTravel from '../../static/data_half.json'
+import vehicleTravel from '../../static/taxi_view.json'
 
 const SAMPLE_DATA = [
     {
@@ -59,11 +59,11 @@ function VehicleTravelLayer(props) {
         visible: props.visible,
         getPath: d => d.waypoints.map(p => p.coordinates),
         // deduct start timestamp from each data point to avoid overflow
-        getTimestamps: d => d.waypoints.map(p => p.timestamp - 1577832521000),
+        getTimestamps: d => d.waypoints.map(p => p.timestamp - 1382371200000),
         getColor: [253, 128, 93],
         widthMinPixels: 5,
         fadeTrail: true,
-        trailLength: 200000,
+        trailLength: 2000,
         currentTime: props.current
     });
 }
