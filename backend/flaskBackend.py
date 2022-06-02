@@ -112,34 +112,34 @@ def getOffCluster():
 def loadGetOnTaxi():
     global GET_ON_TAXI
     path = 'GETON'
-    with open(path, "r") as f:
+    with open(path, "r", encoding='utf-8') as f:
         GET_ON_TAXI = json.load(f)
 
 
 def loadGetOffTaxi():
     global GET_OFF_TAXI
     path = 'GETOFF'
-    with open(path, "r") as f:
+    with open(path, "r", encoding='utf-8') as f:
         GET_OFF_TAXI = json.load(f)
 
 
 def loadGetOnCluster():
     global GET_ON_CLUSTER
     path = 'GETONCLUSTER'
-    with open(path, "r") as f:
+    with open(path, "r", encoding='utf-8') as f:
         GET_ON_CLUSTER = json.load(f)
 
 
 def loadGetOffCluster():
     global GET_OFF_CLUSTER
     path = 'GETOFFCLUSTER'
-    with open(path, "r") as f:
+    with open(path, "r", encoding='utf-8') as f:
         GET_OFF_CLUSTER = json.load(f)
 
 def loadTravel():
     global TRAVEL
     path = 'TRAVEL'
-    with open(path, "r") as f:
+    with open(path, "r", encoding='utf-8') as f:
         TRAVEL = json.load(f)
 
 if __name__ == '__main__':
