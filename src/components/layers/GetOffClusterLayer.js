@@ -8,7 +8,7 @@ const ICON_MAPPING = {
 function GetOffClusterLayer(props) {
     return new IconLayer({
         id: 'GetOffClusterLayer',
-        data: 'http://127.0.0.1:5000/getOffCluster',
+        data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/get_of_cluster.json',
         getFilterValue: d => d.four_digit_time,
         filterRange: [100 * parseInt(props.begin / 60) + parseInt(props.end / 60), 100 * parseInt(props.begin / 60) + parseInt(props.end / 60)],
         extensions: [new DataFilterExtension({ filterSize: 1 })],

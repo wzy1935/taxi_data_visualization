@@ -4,10 +4,10 @@ import {Control, DEFAULT_CONTROL} from "./components/Control"
 
 import { Report } from "./components/Report";
 import VehicleTravelLayer from "./components/layers/VehicleTravelLayer";
-import GetInClusterLayer from "./components/layers/GetInClusterLayer";
+import GetOnClusterLayer from "./components/layers/GetOnClusterLayer";
 import GetOffClusterLayer from "./components/layers/GetOffClusterLayer";
-import GetonTaxiLayer from "./components/layers/GetonTaxiLayer";
-import GetoffTaxiLayer from "./components/layers/GetoffTaxiLayer";
+import GetOnTaxiLayer from "./components/layers/GetOnTaxiLayer";
+import GetOffTaxiLayer from "./components/layers/GetOffTaxiLayer";
 
 
 
@@ -24,9 +24,9 @@ class App extends React.Component {
     generateLayer = (vals) => {
         return [
             VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current}),
-            GetonTaxiLayer({'visible':vals.enablePickupPointLayer,'begin':vals.begin,'end':vals.end}),
-            GetoffTaxiLayer({'visible':vals.enableDropoffPointLayer,'begin':vals.begin,'end':vals.end}),
-            GetInClusterLayer({ 'visible': vals.enableGetInClusterLayer, 'begin': vals.begin, 'end': vals.end}),
+            GetOnTaxiLayer({'visible':vals.enablePickupPointLayer,'begin':vals.begin,'end':vals.end}),
+            GetOffTaxiLayer({'visible':vals.enableDropoffPointLayer,'begin':vals.begin,'end':vals.end}),
+            GetOnClusterLayer({ 'visible': vals.enableGetInClusterLayer, 'begin': vals.begin, 'end': vals.end}),
             GetOffClusterLayer({ 'visible': vals.enableGetOffClusterLayer, 'begin': vals.begin, 'end': vals.end})
         ];
     }

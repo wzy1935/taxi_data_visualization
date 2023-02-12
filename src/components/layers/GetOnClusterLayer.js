@@ -5,10 +5,10 @@ const ICON_MAPPING = {
     marker: { x: 0, y: 0, width: 128, height: 128, anchorX: 64, anchorY: 128, mask: true }
 };
 
-function GetInClusterLayer(props) {
+function GetOnClusterLayer(props) {
     return new IconLayer({
         id: 'GetInClusterLayer',
-        data: 'http://127.0.0.1:5000/getOnCluster',
+        data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/get_on_cluster.json',
         getFilterValue: d => d.four_digit_time,
         filterRange: [100 * parseInt(props.begin / 60) + parseInt(props.end / 60), 100 * parseInt(props.begin / 60) + parseInt(props.end / 60)],
         extensions: [new DataFilterExtension({ filterSize: 1 })],
@@ -25,4 +25,4 @@ function GetInClusterLayer(props) {
 
 }
 
-export default GetInClusterLayer;
+export default GetOnClusterLayer;

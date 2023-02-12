@@ -10,7 +10,7 @@ const DEFAULT_CONTROL = {
     enableExampleHeatLayer: false,
     enableCabTripLayer: false,
     enableVehicleTravelLayer: false,
-    enableGetInClusterLayer: false,
+    enableGetOnClusterLayer: false,
     enableGetOffClusterLayer: false,
     enablePlaying: false,
     threeValues: [0, 480, 1440],
@@ -86,7 +86,7 @@ class Control extends React.Component {
                 </button>
                 <button
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md"
-                        + (this.state.enableGetInClusterLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
+                        + (this.state.enableGetOnClusterLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
                         this.changeLayer('enableGetInClusterLayer');
                     }}

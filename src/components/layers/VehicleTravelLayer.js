@@ -4,7 +4,7 @@ function VehicleTravelLayer(props) {
     return new TripsLayer({
         id: 'VehicleTravelLayer',
         // data: vehicleTravel,
-        data: 'http://127.0.0.1:5000/vehicleTravel',
+        data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/travel.json',
         visible: props.visible,
         getPath: d => d.path,
         getTimestamps: d => d.timestamps,

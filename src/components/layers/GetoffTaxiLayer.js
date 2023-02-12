@@ -2,10 +2,10 @@ import {ScatterplotLayer} from '@deck.gl/layers';
 import {DataFilterExtension} from '@deck.gl/extensions';
 
 
-function GetoffTaxiLayer(props) {
+function GetOffTaxiLayer(props) {
     return new ScatterplotLayer({
         id: 'get-off-layer',
-        data: 'http://127.0.0.1:5000/getOffTaxi',
+        data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/get_off.json',
         visible:props.visible,
         opacity: 0.2,
         filled: true,
@@ -22,4 +22,4 @@ function GetoffTaxiLayer(props) {
     })
 }
 
-export default GetoffTaxiLayer;
+export default GetOffTaxiLayer;

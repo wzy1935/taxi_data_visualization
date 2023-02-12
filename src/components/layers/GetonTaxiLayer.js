@@ -2,10 +2,10 @@ import {ScatterplotLayer} from '@deck.gl/layers';
 import {DataFilterExtension} from '@deck.gl/extensions';
 
 
-function GetonTaxiLayer(props) {
+function GetOnTaxiLayer(props) {
     return new ScatterplotLayer({
         id: 'pick-up-layer',
-        data: 'http://127.0.0.1:5000/getOnTaxi',
+        data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/get_on.json',
         visible:props.visible,
         opacity: 0.2,
         filled: true,
@@ -23,4 +23,4 @@ function GetonTaxiLayer(props) {
 }
 
 
-export default GetonTaxiLayer;
+export default GetOnTaxiLayer;
