@@ -2,8 +2,7 @@ import React from 'react';
 import DeckGL from '@deck.gl/react';
 import {Map} from 'react-map-gl';
 
-// This is my personal token!!! frequently use this will cost MONEY!!!!!!!!!
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1Ijoid3p5MTkzNSIsImEiOiJjbDM5eWcybTYwMGNvM2JvNG0ybWJuejhsIn0.q2s9n34dVRiuflvgyUBDFA';
+const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 
 const INITIAL_VIEW_STATE = {
