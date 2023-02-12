@@ -24,9 +24,9 @@ class App extends React.Component {
     generateLayer = (vals) => {
         return [
             VehicleTravelLayer({'visible': vals.enableVehicleTravelLayer, 'current': vals.current}),
-            GetOnTaxiLayer({'visible':vals.enablePickupPointLayer,'begin':vals.begin,'end':vals.end}),
-            GetOffTaxiLayer({'visible':vals.enableDropoffPointLayer,'begin':vals.begin,'end':vals.end}),
-            GetOnClusterLayer({ 'visible': vals.enableGetInClusterLayer, 'begin': vals.begin, 'end': vals.end}),
+            GetOnTaxiLayer({'visible':vals.enablePickUpPointLayer,'begin':vals.begin,'end':vals.end}),
+            GetOffTaxiLayer({'visible':vals.enableDropOffPointLayer,'begin':vals.begin,'end':vals.end}),
+            GetOnClusterLayer({ 'visible': vals.enableGetOnClusterLayer, 'begin': vals.begin, 'end': vals.end}),
             GetOffClusterLayer({ 'visible': vals.enableGetOffClusterLayer, 'begin': vals.begin, 'end': vals.end})
         ];
     }

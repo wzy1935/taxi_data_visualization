@@ -15,8 +15,8 @@ const DEFAULT_CONTROL = {
     enablePlaying: false,
     threeValues: [0, 480, 1440],
     showReport: false,
-    enablePickupPointLayer:false,
-    enableDropoffPointLayer:false
+    enablePickUpPointLayer:false,
+    enableDropOffPointLayer:false
 }
 
 
@@ -59,7 +59,9 @@ class Control extends React.Component {
     }
 
     changeLayer = (layerName) => {
-        this.state[layerName] = !this.state[layerName];
+        let newObj = {}
+        newObj[layerName] = !this.state[layerName]
+        this.setState(newObj, this.onChange);
         this.onChange();
     }
 
@@ -78,9 +80,9 @@ class Control extends React.Component {
             <div className=" ml-6 mt-6 p-6 pt-3 bg-gray-100 rounded-md shadow-md h-min min-w-fit pointer-events-auto">
                 <button
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md"
-                    + (this.state.enablePickupPointLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
+                    + (this.state.enablePickUpPointLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-                        this.changeLayer('enablePickupPointLayer');
+                        this.changeLayer('enablePickUpPointLayer');
                     }}
                 >上车地点
                 </button>
@@ -88,16 +90,16 @@ class Control extends React.Component {
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md"
                         + (this.state.enableGetOnClusterLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-                        this.changeLayer('enableGetInClusterLayer');
+                        this.changeLayer('enableGetOnClusterLayer');
                     }}
                 >上车地点聚类
                 </button>
                 <br/>
                 <button
                     className={" p-2 transition w-28 m-2 rounded-md shadow-md"
-                    + (this.state.enableDropoffPointLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
+                    + (this.state.enableDropOffPointLayer ? " text-white bg-blue-500 hover:bg-blue-400" : " bg-white hover:bg-gray-200")}
                     onClick={() => {
-                        this.changeLayer('enableDropoffPointLayer');
+                        this.changeLayer('enableDropOffPointLayer');
                     }}
                 >下车地点
                 </button>

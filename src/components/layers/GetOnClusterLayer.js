@@ -7,7 +7,7 @@ const ICON_MAPPING = {
 
 function GetOnClusterLayer(props) {
     return new IconLayer({
-        id: 'GetInClusterLayer',
+        id: 'GetOnClusterLayer',
         data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/get_on_cluster.json',
         getFilterValue: d => d.four_digit_time,
         filterRange: [100 * parseInt(props.begin / 60) + parseInt(props.end / 60), 100 * parseInt(props.begin / 60) + parseInt(props.end / 60)],

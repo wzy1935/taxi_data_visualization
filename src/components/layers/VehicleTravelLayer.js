@@ -3,7 +3,6 @@ import { TripsLayer } from '@deck.gl/geo-layers';
 function VehicleTravelLayer(props) {
     return new TripsLayer({
         id: 'VehicleTravelLayer',
-        // data: vehicleTravel,
         data: 'https://raw.githubusercontent.com/wzy1935/dm_frontend/master/data/travel.json',
         visible: props.visible,
         getPath: d => d.path,
